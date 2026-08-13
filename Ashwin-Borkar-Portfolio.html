@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwin Borkar - Full Stack Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agustina:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6B9B7F;
+            --primary-light: #8FB89A;
+            --primary-dark: #5A8A6E;
+            --bg: #F5F3F0;
+            --bg-light: #FEFDFB;
+            --text: #2C3E42;
+            --text-light: #5A6B72;
+            --border: rgba(107, 155, 127, 0.15);
+            --accent-light: #E8F3F0;
+            --accent-blue: #7BA8C4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            top: -1vh;
+            transform: translateY(0);
+            animation: fall 3s linear forwards;
+            }
+
+            @keyframes fall {
+            from {
+                transform: translateY(0vh) translateX(-10vw); 
+            }
+            to {
+                transform: translateY(105vh) translateX(10vw); 
+            }
+        } 
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FAF8F5 50%, #F0F3F5 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Peaceful Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(107, 155, 127, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(123, 168, 196, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 0%, rgba(107, 155, 127, 0.08) 0%, transparent 40%);
+            animation: peacefulGradient 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(45deg, transparent 30%, rgba(107, 155, 127, 0.03) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(123, 168, 196, 0.03) 50%, transparent 70%);
+            animation: slideBackground 25s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes peacefulGradient {
+            0% {
+                background:
+                    radial-gradient(circle at 20% 50%, rgba(107, 155, 127, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(123, 168, 196, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 0%, rgba(107, 155, 127, 0.08) 0%, transparent 40%);
+            }
+            50% {
+                background:
+                    radial-gradient(circle at 50% 50%, rgba(107, 155, 127, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(123, 168, 196, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(107, 155, 127, 0.1) 0%, transparent 40%);
+            }
+            100% {
+                background:
+                    radial-gradient(circle at 20% 50%, rgba(107, 155, 127, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(123, 168, 196, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 0%, rgba(107, 155, 127, 0.08) 0%, transparent 40%);
+            }
+        }
+
+        @keyframes slideBackground {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Animated Blob Shapes - Peaceful */
+        .blob-1 {
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 30% 30%, rgba(107, 155, 127, 0.1), transparent 70%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: blob1-move 15s infinite;
+            z-index: -2;
+            filter: blur(40px);
+        }
+
+        .blob-2 {
+            position: fixed;
+            top: 60%;
+            right: 10%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at 30% 30%, rgba(123, 168, 196, 0.1), transparent 70%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: blob2-move 18s infinite;
+            z-index: -2;
+            filter: blur(40px);
+        }
+
+        .blob-3 {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, rgba(107, 155, 127, 0.08), transparent 70%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: blob3-move 20s infinite;
+            z-index: -2;
+            filter: blur(40px);
+        }
+
+        @keyframes blob1-move {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(50px, -50px); }
+            66% { transform: translate(-30px, 30px); }
+        }
+
+        @keyframes blob2-move {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-50px, 50px); }
+            66% { transform: translate(30px, -30px); }
+        }
+
+        @keyframes blob3-move {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, 40px); }
+            66% { transform: translate(-40px, -30px); }
+        }
+
+        /* Floating Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(107, 155, 127, 0.4);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(245, 243, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: "Agustina Regular";
+            font-size: 1.9rem;
+            font-weight: 700;
+            -webkit-font-feature-settings: "liga","clig off";
+            font-feature-settings: "liga","clig off";
+            font-variant-ligatures: no-common-ligatures;
+            -webkit-font-variant-ligatures: no-common-ligatures;
+            padding: 0 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(123, 168, 196, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 5s ease-in-out infinite 1s;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            letter-spacing: -2px;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            animation: slideInLeft 0.8s ease 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+            max-width: 500px;
+            animation: slideInLeft 0.8s ease 0.4s both;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: slideInLeft 0.8s ease 0.6s both;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.2rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.15);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.25);
+        }
+
+        .cta-secondary {
+            background: var(--accent-light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(107, 155, 127, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.15);
+        }
+
+        .social-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            animation: slideInLeft 0.8s ease 0.8s both;
+        }
+
+        .social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            background: var(--accent-light);
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-btn:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(107, 155, 127, 0.2);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 0.8s ease 0.2s both;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3/4;
+        }
+
+        .image-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 24px;
+            opacity: 0.15;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        .hero-image img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(107, 155, 127, 0.15);
+            border: 2px solid var(--border);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            letter-spacing: -1px;
+            color: var(--text);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            margin: 1.5rem auto 0;
+            border-radius: 3px;
+            animation: expandWidth 0.8s ease;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.04) 0%, rgba(123, 168, 196, 0.04) 100%);
+            position: relative;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.06), transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .exp-cards {
+            display: grid;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .exp-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--primary-light));
+        }
+
+        .exp-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .exp-company {
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .exp-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background: var(--accent-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .exp-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .exp-list li {
+            color: var(--text-light);
+            margin-bottom: 0.9rem;
+            padding-left: 1.8rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .exp-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, rgba(123, 168, 196, 0.04) 0%, rgba(107, 155, 127, 0.04) 100%);
+            position: relative;
+        }
+
+        .skills::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(123, 168, 196, 0.06), transparent 70%);
+            border-radius: 50%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(107, 155, 127, 0.2);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(107, 155, 127, 0.15);
+        }
+
+        .skill-icon {
+            display: inline-block;
+            margin-right: 0.4rem;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        .skill-card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card-header h3 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        /* Colorful skill tag variations */
+        .skill-tag {
+            position: relative;
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.08) 0%, rgba(143, 184, 154, 0.08) 100%);
+            border: 1.5px solid rgba(107, 155, 127, 0.25);
+        }
+
+        .skill-tag:nth-child(1) {
+            background: linear-gradient(135deg, rgba(219, 112, 147, 0.12) 0%, rgba(240, 128, 128, 0.1) 100%);
+            border-color: rgba(219, 112, 147, 0.35);
+        }
+
+        .skill-tag:nth-child(2) {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.12) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border-color: rgba(255, 140, 0, 0.35);
+        }
+
+        .skill-tag:nth-child(3) {
+            background: linear-gradient(135deg, rgba(123, 168, 196, 0.12) 0%, rgba(100, 149, 237, 0.1) 100%);
+            border-color: rgba(123, 168, 196, 0.35);
+        }
+
+        .skill-tag:nth-child(4) {
+            background: linear-gradient(135deg, rgba(144, 238, 144, 0.12) 0%, rgba(152, 251, 152, 0.1) 100%);
+            border-color: rgba(144, 238, 144, 0.35);
+        }
+
+        .skill-tag:nth-child(5) {
+            background: linear-gradient(135deg, rgba(221, 160, 221, 0.12) 0%, rgba(216, 191, 216, 0.1) 100%);
+            border-color: rgba(221, 160, 221, 0.35);
+        }
+
+        .skill-tag:nth-child(6) {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(255, 228, 125, 0.1) 100%);
+            border-color: rgba(255, 215, 0, 0.35);
+        }
+
+        .skill-tag:nth-child(7) {
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.12) 0%, rgba(175, 238, 238, 0.1) 100%);
+            border-color: rgba(64, 224, 208, 0.35);
+        }
+
+        .skill-tag:nth-child(8) {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.12) 0%, rgba(255, 182, 193, 0.1) 100%);
+            border-color: rgba(255, 105, 180, 0.35);
+        }
+
+        .skill-tag:nth-child(9) {
+            background: linear-gradient(135deg, rgba(135, 206, 250, 0.12) 0%, rgba(173, 216, 230, 0.1) 100%);
+            border-color: rgba(135, 206, 250, 0.35);
+        }
+
+        .skill-tag:nth-child(10) {
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.12) 0%, rgba(255, 218, 185, 0.1) 100%);
+            border-color: rgba(255, 192, 203, 0.35);
+        }
+
+        .skill-tag:nth-child(11) {
+            background: linear-gradient(135deg, rgba(240, 230, 140, 0.12) 0%, rgba(255, 250, 205, 0.1) 100%);
+            border-color: rgba(240, 230, 140, 0.35);
+        }
+
+        .skill-tag:nth-child(12) {
+            background: linear-gradient(135deg, rgba(176, 224, 230, 0.12) 0%, rgba(186, 225, 236, 0.1) 100%);
+            border-color: rgba(176, 224, 230, 0.35);
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.25);
+            border-color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.04) 0%, rgba(123, 168, 196, 0.04) 100%);
+            position: relative;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -150px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.06), transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(107, 155, 127, 0.12);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+            flex-grow: 1;
+            line-height: 1.8;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--primary-light);
+            transform: translateX(4px);
+        }
+
+        /* GitHub Section */
+        .github {
+            background: linear-gradient(135deg, rgba(123, 168, 196, 0.04) 0%, rgba(107, 155, 127, 0.04) 100%);
+            position: relative;
+        }
+
+        .github::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.08), transparent 70%);
+            border-radius: 50%;
+            animation: float 9s ease-in-out infinite;
+        }
+
+        .github-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gh-profile-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.15);
+        }
+
+        .gh-profile-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.25);
+        }
+
+        .github-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gh-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .gh-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .gh-repo-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            word-break: break-word;
+        }
+
+        .gh-repo-desc {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .gh-repo-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gh-repo-link:hover {
+            color: var(--primary-light);
+            transform: translateX(4px);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.04) 0%, rgba(123, 168, 196, 0.04) 100%);
+            position: relative;
+        }
+
+        .blog::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(123, 168, 196, 0.06), transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-article-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-article-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .blog-article-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-article-desc {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .blog-article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blog-article-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--accent-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+        }
+
+        .blog-article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-article-tag {
+            font-size: 0.75rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .blog-article-link {
+            color: white;
+            background: linear-gradient(135deg, #2C3E42, #556B72);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .blog-article-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(44, 62, 66, 0.2);
+        }
+
+        .blog-card {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .blog-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .blog-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 0.95rem;
+        }
+
+        .blog-btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .blog-medium {
+            background: linear-gradient(135deg, #2C3E42, #556B72);
+            color: white;
+        }
+
+        .blog-medium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(44, 62, 66, 0.2);
+        }
+
+        .blog-ruby {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+        }
+
+        .blog-ruby:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+        }
+
+        /* Ruby Gems Section */
+        .rubygems {
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.05) 0%, rgba(123, 168, 196, 0.05) 100%);
+            position: relative;
+        }
+
+        .rubygems::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.08), transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .rubygems-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rubygems-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .rubygems-intro h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .rubygems-intro p {
+            color: var(--text-light);
+            margin-bottom: 0;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .gem-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gem-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .gem-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .gem-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gem-icon {
+            font-size: 2rem;
+        }
+
+        .gem-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .gem-version {
+            font-size: 0.85rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .gem-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .gem-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .gem-stat {
+            text-align: center;
+        }
+
+        .gem-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .gem-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gem-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .gem-author {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .gem-license {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .gem-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .gem-link {
+            flex: 1;
+            padding: 0.7rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .gem-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(107, 155, 127, 0.2);
+        }
+
+        .rubygems-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .rubygems-values {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .rubygems-values h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .values-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .values-list li {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 1rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .values-list strong {
+            color: var(--primary);
+        }
+
+        /* Education Section */
+        .education {
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.04) 0%, rgba(123, 168, 196, 0.04) 100%);
+            position: relative;
+        }
+
+        .education::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.06), transparent 70%);
+            border-radius: 50%;
+            animation: float 11s ease-in-out infinite;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .edu-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .edu-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(107, 155, 127, 0.12);
+        }
+
+        .edu-degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-school {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-info {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(123, 168, 196, 0.04) 0%, rgba(107, 155, 127, 0.04) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107, 155, 127, 0.08), transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .contact-center {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            padding: 1.8rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.12);
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            background: rgba(245, 243, 240, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Blob Background Elements -->
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+
+    <!-- Particles Container -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">𝔄𝔰𝔥𝔴𝔦𝔫 𝔅𝔬𝔯𝔨𝔞𝔯</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#github">GitHub</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#rubygems">Gems</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1>Senior Ruby on Rails Engineer </h1>
+                <p class="tagline">Building Tomorrow's Web Today</p>
+                <p>I'm a strategic full-stack developer with 5+ years of expertise architecting high-performance backends and scalable systems. Specialized in Ruby on Rails, Node.js, React.js, and cloud infrastructure with a passion for clean code, TDD, and delivering exceptional user experiences.</p>
+
+                <div class="cta-group">
+                    <a href="#contact" class="cta-btn cta-primary">📧 Get In Touch</a>
+                    <a href="#github" class="cta-btn cta-secondary">💻 View My Work</a>
+                </div>
+
+                <div class="social-group">
+                    <a href="https://github.com/ashwin-borkar" target="_blank" class="social-btn" title="GitHub">🔗</a>
+                    <a href="https://medium.com/@ashwinborkar1997" target="_blank" class="social-btn" title="Medium">📝</a>
+                    <a href="https://rubygems.org/dashboard" target="_blank" class="social-btn" title="Ruby Gems">💎</a>
+                    <a href="https://www.linkedin.com/in/ashwin-borkar-a3b0a01a6" target="_blank" class="social-btn" title="LinkedIn">💼</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <div class="image-bg"></div>
+                    <img src="file:///home/admin2/portfolio/AshwinPassportphoto.jpeg" alt="Ashwin Borkar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="section-container">
+            <h2>Professional Experience</h2>
+            <div class="exp-cards">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Analyst Programmer</div>
+                            <div class="exp-company">C2L BIZ SOLUTION, Mumbai</div>
+                        </div>
+                        <div class="exp-date">Jul 2025 - Dec 2025</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li>Developed and maintained mobile applications using the <strong>Rhodes (Rhomobile) framework with Ruby</strong></li>
+                        <li>Implemented business logic, controllers, and data models using Ruby for enterprise applications</li>
+                        <li>Worked on <strong>offline-first mobile applications</strong> with data synchronization between devices and backend servers</li>
+                        <li>Integrated <strong>REST APIs and web services</strong> for backend communication and external service integration</li>
+                        <li>Managed database interactions using Rhomobile ORM and local storage for persistent data handling</li>
+                        <li>Debugged issues related to <strong>data synchronization, performance, and device compatibility</strong></li>
+                        <li>Collaborated with QA, UI developers, and backend teams to deliver scalable mobile solutions</li>
+                        <li>Used <strong>Git for version control</strong> and participated in collaborative development practices</li>
+                        <li>Participated in requirement analysis, development, testing, and deployment across full project lifecycle</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Software Developer</div>
+                            <div class="exp-company">THINKBIZ SOLUTION, Ahmedabad</div>
+                        </div>
+                        <div class="exp-date">Sep 2022 - Jul 2025</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>Lead backend development</strong> for multiple projects including Cardinal Talent and Venture Support, delivering scalable features using <strong>Ruby on Rails</strong></li>
+                        <li><strong>Managed the complete project lifecycle</strong> for Venture Support from development to deployment and production support</li>
+                        <li><strong>Designed and implemented secure RESTful APIs</strong>, including authentication, authorization, and role-based access control</li>
+                        <li>Worked extensively with <strong>AWS (EC2, RDS, SQS)</strong> managing infrastructure, deployments, and database scaling</li>
+                        <li><strong>Implemented background jobs using Sidekiq</strong> and queue-based processing, improving system performance and asynchronous task handling</li>
+                        <li><strong>Optimized database queries, background jobs, and API performance</strong> significantly improving application responsiveness</li>
+                        <li><strong>Worked on Cardinal Requirement website</strong> developing scalable backend modules and designing RESTful APIs</li>
+                        <li>Built dynamic and responsive user interfaces using <strong>React.js</strong>, improving overall user experience</li>
+                        <li>Implemented database models and associations using <strong>ActiveRecord ORM</strong>, ensuring efficient data handling</li>
+                        <li>Collaborated with frontend developers to integrate APIs and ensure seamless communication between systems</li>
+                        <li>Followed <strong>MVC architecture</strong> and clean coding practices for scalable and maintainable applications</li>
+                        <li>Participated in agile development processes including sprint planning, stand-ups, and code reviews</li>
+                        <li>Used <strong>Git for version control</strong>, managing feature branches and pull requests for collaborative development</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Software Developer</div>
+                            <div class="exp-company">BLUEHOLE (OPC) PVT LTD, Ahmedabad</div>
+                        </div>
+                        <div class="exp-date">Feb 2022 - Aug 2022</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>Worked on the Mondofi project</strong> developing scalable <strong>RESTful APIs using Ruby on Rails and Grape API framework</strong></li>
+                        <li><strong>Implemented authentication and authorization</strong> using token-based security and role-based access control</li>
+                        <li><strong>Designed standardized API response structures</strong> and centralized error handling for better debugging and consistency</li>
+                        <li>Used <strong>ActiveRecord ORM</strong> to design database models, optimize queries, and maintain relational data integrity</li>
+                        <li>Collaborated with senior developers to build backend features and resolve production issues</li>
+                        <li><strong>Integrated third-party APIs and external services</strong> to extend application functionality</li>
+                        <li>Followed <strong>MVC architecture and RESTful design principles</strong> to build scalable backend systems</li>
+                        <li>Participated in code reviews, debugging sessions, and sprint planning to improve code quality</li>
+                        <li>Used <strong>Git for version control</strong> with feature branches and pull requests for team collaboration</li>
+                        <li><strong>Improved API performance</strong> by refactoring inefficient queries and backend logic</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Software Developer (Cardinal Requirement)</div>
+                            <div class="exp-company">BLUEHOLE (OPC) PVT LTD, Ahmedabad</div>
+                        </div>
+                        <div class="exp-date">Aug 2021 - Feb 2022</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>Worked on the Cardinal Requirement website</strong> developing scalable backend modules using <strong>Ruby on Rails</strong></li>
+                        <li><strong>Designed and implemented RESTful APIs</strong> to support frontend applications and third-party integrations</li>
+                        <li><strong>Built dynamic and responsive user interfaces</strong> using <strong>React.js</strong>, improving overall user experience</li>
+                        <li><strong>Implemented database models and associations</strong> using <strong>ActiveRecord ORM</strong>, ensuring efficient data handling</li>
+                        <li><strong>Optimized database queries and backend processes</strong> to improve application performance significantly</li>
+                        <li><strong>Collaborated with frontend developers</strong> to integrate APIs and ensure seamless communication between frontend and backend systems</li>
+                        <li><strong>Debugged and resolved application issues</strong> and production bugs to maintain stable releases</li>
+                        <li>Followed <strong>MVC architecture and clean coding practices</strong> for scalable and maintainable applications</li>
+                        <li>Participated in <strong>agile development processes</strong> including sprint planning, stand-ups, and code reviews</li>
+                        <li>Used <strong>Git for version control</strong>, managing feature branches and pull requests for collaborative development</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Senior Software Developer</div>
+                            <div class="exp-company">BLUEHOLE (OPC) PVT LTD, Ahmedabad</div>
+                        </div>
+                        <div class="exp-date">Jul 2021 - Aug 2021</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>Developed core functional modules</strong> using <strong>Ruby on Rails MVC architecture</strong> for multiple enterprise applications</li>
+                        <li><strong>Designed and maintained responsive UIs</strong> using <strong>React.js</strong> with modern frontend practices</li>
+                        <li><strong>Built and consumed RESTful web services</strong> for efficient data exchange between frontend and backend systems</li>
+                        <li><strong>Implemented complex business logic</strong> and data processing workflows using advanced Ruby techniques</li>
+                        <li>Collaborated with <strong>UI/UX, QA teams</strong> to deliver scalable and user-friendly solutions</li>
+                        <li><strong>Optimized application performance</strong> through database query optimization and code refactoring</li>
+                        <li><strong>Managed database migrations and schema design</strong> using PostgreSQL and ActiveRecord</li>
+                        <li>Implemented <strong>comprehensive testing strategies</strong> with RSpec to ensure code quality and reliability</li>
+                        <li><strong>Debugged and resolved complex issues</strong> in production environment to maintain system stability</li>
+                        <li>Mentored junior developers and conducted <strong>technical code reviews</strong> to maintain code standards</li>
+                        <li>Participated in architectural discussions and contributed to <strong>system design decisions</strong></li>
+                        <li>Used <strong>Agile development methodologies</strong> for sprint-based project management and delivery</li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Trainee Engineer</div>
+                            <div class="exp-company">ANTIER SOLUTIONS PVT LTD, Chandigarh</div>
+                        </div>
+                        <div class="exp-date">Apr 2021 - Feb 2022</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>Worked on the Mondofi project</strong> developing scalable <strong>RESTful APIs using Ruby on Rails and Grape API framework</strong></li>
+                        <li><strong>Implemented authentication and authorization</strong> using token-based security and role-based access control</li>
+                        <li><strong>Designed standardized API response structures</strong> and centralized error handling for better debugging and consistency</li>
+                        <li>Used <strong>ActiveRecord ORM</strong> to design database models, optimize queries, and maintain relational data integrity</li>
+                        <li>Collaborated with senior developers to build backend features and resolve production issues</li>
+                        <li><strong>Integrated third-party APIs and external services</strong> to extend application functionality</li>
+                        <li>Followed <strong>MVC architecture and RESTful design principles</strong> to build scalable backend systems</li>
+                        <li>Participated in code reviews, debugging sessions, and sprint planning to improve code quality</li>
+                        <li>Used <strong>Git for version control</strong> with feature branches and pull requests for team collaboration</li>
+                        <li><strong>Improved API performance</strong> by refactoring inefficient queries and backend logic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>🔧 Backend Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">💎</span>Ruby on Rails</span>
+                        <span class="skill-tag"><span class="skill-icon">📦</span>Node.js</span>
+                        <span class="skill-tag"><span class="skill-icon">🏗️</span>NestJS</span>
+                        <span class="skill-tag"><span class="skill-icon">🔌</span>REST APIs</span>
+                        <span class="skill-tag"><span class="skill-icon">🍇</span>Grape Framework</span>
+                        <span class="skill-tag"><span class="skill-icon">⚙️</span>Sidekiq</span>
+                        <span class="skill-tag"><span class="skill-icon">🔄</span>GraphQL</span>
+                        <span class="skill-tag"><span class="skill-icon">🔐</span>Authentication</span>
+                        <span class="skill-tag"><span class="skill-icon">🔗</span>Microservices</span>
+                        <span class="skill-tag"><span class="skill-icon">📨</span>Message Queues</span>
+                        <span class="skill-tag"><span class="skill-icon">🛡️</span>Security</span>
+                        <span class="skill-tag"><span class="skill-icon">⚡</span>Caching</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>🎨 Frontend Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">⚛️</span>React.js</span>
+                        <span class="skill-tag"><span class="skill-icon">🎯</span>MobX</span>
+                        <span class="skill-tag"><span class="skill-icon">🏷️</span>HTML5</span>
+                        <span class="skill-tag"><span class="skill-icon">🎨</span>CSS3</span>
+                        <span class="skill-tag"><span class="skill-icon">📦</span>Bootstrap</span>
+                        <span class="skill-tag"><span class="skill-icon">📚</span>jQuery</span>
+                        <span class="skill-tag"><span class="skill-icon">✨</span>UI/UX Design</span>
+                        <span class="skill-tag"><span class="skill-icon">📱</span>Responsive Design</span>
+                        <span class="skill-tag"><span class="skill-icon">🎬</span>Animations</span>
+                        <span class="skill-tag"><span class="skill-icon">📊</span>Data Visualization</span>
+                        <span class="skill-tag"><span class="skill-icon">♿</span>Accessibility</span>
+                        <span class="skill-tag"><span class="skill-icon">⚡</span>Performance</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>🗄️ Databases & Storage</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">🐘</span>PostgreSQL</span>
+                        <span class="skill-tag"><span class="skill-icon">🐬</span>MySQL</span>
+                        <span class="skill-tag"><span class="skill-icon">🍃</span>MongoDB</span>
+                        <span class="skill-tag"><span class="skill-icon">📊</span>SQL Server</span>
+                        <span class="skill-tag"><span class="skill-icon">💾</span>SQLite</span>
+                        <span class="skill-tag"><span class="skill-icon">⚡</span>Query Optimization</span>
+                        <span class="skill-tag"><span class="skill-icon">🔴</span>Redis</span>
+                        <span class="skill-tag"><span class="skill-icon">🔍</span>Indexing</span>
+                        <span class="skill-tag"><span class="skill-icon">🔐</span>Data Security</span>
+                        <span class="skill-tag"><span class="skill-icon">💫</span>Transactions</span>
+                        <span class="skill-tag"><span class="skill-icon">🔄</span>Replication</span>
+                        <span class="skill-tag"><span class="skill-icon">📈</span>Scaling</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>☁️ DevOps & Cloud</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">☁️</span>AWS (EC2, RDS)</span>
+                        <span class="skill-tag"><span class="skill-icon">🚀</span>Heroku</span>
+                        <span class="skill-tag"><span class="skill-icon">🚢</span>Capistrano</span>
+                        <span class="skill-tag"><span class="skill-icon">⚙️</span>Nginx</span>
+                        <span class="skill-tag"><span class="skill-icon">🏃</span>Puma</span>
+                        <span class="skill-tag"><span class="skill-icon">🐳</span>Docker</span>
+                        <span class="skill-tag"><span class="skill-icon">📦</span>Kubernetes</span>
+                        <span class="skill-tag"><span class="skill-icon">🔧</span>Linux Admin</span>
+                        <span class="skill-tag"><span class="skill-icon">📊</span>Monitoring & Logging</span>
+                        <span class="skill-tag"><span class="skill-icon">🔐</span>SSL/TLS</span>
+                        <span class="skill-tag"><span class="skill-icon">🌍</span>CDN</span>
+                        <span class="skill-tag"><span class="skill-icon">⚡</span>Load Balancing</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>🛠️ Tools & Practices</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">📝</span>Git/Bitbucket</span>
+                        <span class="skill-tag"><span class="skill-icon">✅</span>RSpec/TDD</span>
+                        <span class="skill-tag"><span class="skill-icon">🔄</span>CI/CD</span>
+                        <span class="skill-tag"><span class="skill-icon">🔨</span>Jenkins</span>
+                        <span class="skill-tag"><span class="skill-icon">🎯</span>Agile/Scrum</span>
+                        <span class="skill-tag"><span class="skill-icon">👀</span>Code Review</span>
+                        <span class="skill-tag"><span class="skill-icon">🐛</span>Debugging</span>
+                        <span class="skill-tag"><span class="skill-icon">📈</span>Performance Testing</span>
+                        <span class="skill-tag"><span class="skill-icon">🎭</span>Testing Frameworks</span>
+                        <span class="skill-tag"><span class="skill-icon">📊</span>Jira/Trello</span>
+                        <span class="skill-tag"><span class="skill-icon">🔍</span>Code Analysis</span>
+                        <span class="skill-tag"><span class="skill-icon">🚀</span>Deployment</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <h3>💡 Soft Skills & Leadership</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><span class="skill-icon">🧠</span>Problem Solving</span>
+                        <span class="skill-tag"><span class="skill-icon">👥</span>Team Leadership</span>
+                        <span class="skill-tag"><span class="skill-icon">📐</span>API Design</span>
+                        <span class="skill-tag"><span class="skill-icon">⚡</span>Performance Optimization</span>
+                        <span class="skill-tag"><span class="skill-icon">📖</span>Technical Documentation</span>
+                        <span class="skill-tag"><span class="skill-icon">🎓</span>Mentoring</span>
+                        <span class="skill-tag"><span class="skill-icon">💬</span>Communication</span>
+                        <span class="skill-tag"><span class="skill-icon">🎯</span>Project Management</span>
+                        <span class="skill-tag"><span class="skill-icon">💡</span>Innovation</span>
+                        <span class="skill-tag"><span class="skill-icon">🤝</span>Collaboration</span>
+                        <span class="skill-tag"><span class="skill-icon">⏰</span>Time Management</span>
+                        <span class="skill-tag"><span class="skill-icon">🎖️</span>Architectural Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">SUNPH V8</div>
+                    <p class="project-desc">iPad application development with production support and iOS build pipeline management for enterprise property management clients.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Cardinal Talent</div>
+                    <p class="project-desc">AI-powered recruitment platform connecting top tech talent with leading companies. Full-stack implementation with modern tech stack.</p>
+                    <a href="https://cardinaltalent.ai" target="_blank" class="project-link">Visit Platform →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">MondoFi System</div>
+                    <p class="project-desc">Smart Building Operating System for property management with interactive mobile app for tenant management and facility operations.</p>
+                    <a href="https://app.mondofi.co" target="_blank" class="project-link">View Demo →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Venture Supports</div>
+                    <p class="project-desc">Corporate platform for contracts and monthly tax invoices serving Japanese market with automated invoice processing.</p>
+                    <a href="https://vs-vebuin.jp" target="_blank" class="project-link">Explore →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">RightON</div>
+                    <p class="project-desc">E-commerce platform for nationwide specialty retail store selling jeans and casual wear with inventory management.</p>
+                    <a href="https://right-on.co.jp" target="_blank" class="project-link">Visit Store →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Kanban Board</div>
+                    <p class="project-desc">Full-stack task management system with React frontend and Rails backend featuring drag-and-drop functionality.</p>
+                    <a href="https://github.com/ashwin-borkar" target="_blank" class="project-link">View Code →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="github">
+        <div class="section-container">
+            <h2>GitHub Projects</h2>
+            <div class="github-header">
+                <a href="https://github.com/ashwin-borkar" target="_blank" class="gh-profile-btn">🔗 View Full GitHub Profile</a>
+            </div>
+            <div class="github-grid">
+                <div class="gh-card">
+                    <div class="gh-repo-name">📱 app_ecodash</div>
+                    <p class="gh-repo-desc">Practical eco-dashboard application demonstrating modern development practices and clean architecture patterns.</p>
+                    <a href="https://github.com/ashwin-borkar/app_ecodash" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">🎫 billetto_assignment</div>
+                    <p class="gh-repo-desc">Rails app with event-driven architecture and external API integration for comprehensive event management.</p>
+                    <a href="https://github.com/ashwin-borkar/billetto_assignment" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">📊 kanban_board</div>
+                    <p class="gh-repo-desc">Backend Ruby on Rails implementation of Kanban board with comprehensive task management features.</p>
+                    <a href="https://github.com/ashwin-borkar/kanban_board" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">⚛️ kanban_board_frontend_React</div>
+                    <p class="gh-repo-desc">React frontend for Kanban board with interactive UI and advanced state management using MobX.</p>
+                    <a href="https://github.com/ashwin-borkar/kanban_board_frontent_React" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">📄 csv_tsv_xlsx_handler</div>
+                    <p class="gh-repo-desc">Ruby gem for handling CSV, TSV, and XLSX file processing with powerful data transformation utilities.</p>
+                    <a href="https://github.com/ashwin-borkar/csv_tsv_xlsx_handler" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">🚖 employees_cab_service</div>
+                    <p class="gh-repo-desc">NestJS project for managing employee cab services with advanced scheduling and route optimization.</p>
+                    <a href="https://github.com/ashwin-borkar/employees_cab_service_project_in_the_nest_js" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">🏥 hospital-system-app</div>
+                    <p class="gh-repo-desc">Comprehensive hospital management system for patient records, appointments, and complete medical history.</p>
+                    <a href="https://github.com/ashwin-borkar/hospital-system-app" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+
+                <div class="gh-card">
+                    <div class="gh-repo-name">💼 job_app</div>
+                    <p class="gh-repo-desc">Job application tracking system with intelligent resume parsing and automated matching features.</p>
+                    <a href="https://github.com/ashwin-borkar/job_app" target="_blank" class="gh-repo-link">Repository →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Community Section -->
+    <section id="blog" class="blog">
+        <div class="section-container">
+            <h2>📝 Medium Articles</h2>
+            <div class="blog-articles-grid" id="mediumArticles"></div>
+        </div>
+    </section>
+
+    <!-- Ruby Gems Section -->
+    <section id="rubygems" class="rubygems">
+        <div class="section-container">
+            <h2>💎 Published Ruby Gems</h2>
+            <div class="rubygems-container">
+                <div class="rubygems-intro">
+                    <h3>🌟 Open Source Contributions</h3>
+                    <p>Active contributor to the Ruby ecosystem. Published production-ready gems used by developers worldwide. Focused on creating reusable, well-maintained solutions for common development challenges.</p>
+                </div>
+
+                <div class="gems-grid" id="gemsGrid"></div>
+
+                <div class="rubygems-values">
+                    <h3>Why These Gems Matter</h3>
+                    <ul class="values-list">
+                        <li>✨ <strong>Quality Code</strong> - Well-tested, documented, and maintainable</li>
+                        <li>🤝 <strong>Community First</strong> - Solving real problems for Rails developers</li>
+                        <li>📚 <strong>Documentation</strong> - Clear guides and examples provided</li>
+                        <li>🚀 <strong>Active Maintenance</strong> - Regular updates and bug fixes</li>
+                        <li>💡 <strong>Real World Usage</strong> - Trusted by developers globally</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="section-container">
+            <h2>Education & Certifications</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">🎓 BCA</div>
+                    <div class="edu-school">Santaji College, Nagpur</div>
+                    <div class="edu-info">Graduated: January 2021 | GPA: 65%</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">🏢 Diploma - Fire Service</div>
+                    <div class="edu-school">G.H Raisoni, Hingna, Nagpur</div>
+                    <div class="edu-info">Completed: January 2017 | GPA: 80.1%</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">📜 CSS & HTML</div>
+                    <div class="edu-school">SoloLearn</div>
+                    <div class="edu-info">Online Certificate</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">📜 JavaScript</div>
+                    <div class="edu-school">SoloLearn</div>
+                    <div class="edu-info">Online Certificate</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">📜 API & SQL</div>
+                    <div class="edu-school">HackerRank</div>
+                    <div class="edu-info">Online Certificate</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">🏆 Sports</div>
+                    <div class="edu-school">Woodball Association</div>
+                    <div class="edu-info">6th Jr State Championship 2015</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <div class="contact-center">
+                <h2>Let's Connect</h2>
+                <p style="margin-top: 1rem; color: var(--text-light); font-size: 1.1rem;">I'm always open to new opportunities, collaborations, and conversations about technology and innovation.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span style="font-size: 1.5rem;">📧</span>
+                        <a href="mailto:ashwinborkar1997@gmail.com" class="contact-link">ashwinborkar1997@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span style="font-size: 1.5rem;">📱</span>
+                        <a href="tel:+917387222151, +918554968914" class="contact-link">+91 7387222151  , +91 8554968914</a>
+                    </div>
+                    <div class="contact-item">
+                        <span style="font-size: 1.5rem;">📍</span>
+                        <span>Nagpur, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span style="font-size: 1.5rem;">💼</span>
+                        <a href="https://www.linkedin.com/in/ashwin-borkar-a3b0a01a6" target="_blank" class="contact-link">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <span style="font-size: 1.5rem;">🔗</span>
+                        <a href="https://github.com/ashwin-borkar" target="_blank" class="contact-link">GitHub Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ashwin Borkar. Full-Stack Developer & Solutions Architect | Nagpur, India</p>
+    </footer>
+
+    <script>
+        // Ruby Gems Data
+        const rubyGems = [
+            {
+                name: "csv_tsv_xlsx_handler",
+                icon: "📦",
+                version: "0.1.1",
+                description: "Easy-to-use utilities for reading, writing, and processing CSV, TSV, and XLSX files in Ruby applications. Simplifies handling common data formats with seamless structured data processing.",
+                downloads: 1252,
+                versionDownloads: 763,
+                author: "Ashwin Borkar",
+                license: "MIT",
+                homepage: "https://github.com/ashwin-borkar/csv_tsv_xlsx_handler",
+                gem: "https://rubygems.org/gems/csv_tsv_xlsx_handler",
+                github: "https://github.com/ashwin-borkar/csv_tsv_xlsx_handler"
+            },
+            {
+                name: "xano_api_gem",
+                icon: "🔌",
+                version: "0.1.0",
+                description: "A Ruby gem for interacting with the Xano API. Provides a client for making requests to the Xano API with built-in error handling and seamless integration.",
+                downloads: 1074,
+                versionDownloads: 1074,
+                author: "Ashwin Borkar",
+                license: "MIT",
+                homepage: "https://github.com/ashwin-borkar/xano_api_gem",
+                gem: "https://rubygems.org/gems/xano_api_gem",
+                github: "https://github.com/ashwin-borkar/xano_api_gem"
+            }
+        ];
+
+        // Render Ruby Gems
+        function renderGems() {
+            const container = document.getElementById('gemsGrid');
+            if (!container) return;
+
+            container.innerHTML = rubyGems.map((gem, index) => `
+                <div class="gem-card" style="animation-delay: ${index * 0.08}s">
+                    <div class="gem-header">
+                        <span class="gem-icon">${gem.icon}</span>
+                        <div class="gem-name">${gem.name}</div>
+                        <div class="gem-version">v${gem.version}</div>
+                    </div>
+
+                    <p class="gem-description">${gem.description}</p>
+
+                    <div class="gem-stats">
+                        <div class="gem-stat">
+                            <div class="gem-stat-number">${(gem.downloads / 1000).toFixed(1)}k</div>
+                            <div class="gem-stat-label">Total Downloads</div>
+                        </div>
+                        <div class="gem-stat">
+                            <div class="gem-stat-number">${gem.versionDownloads}</div>
+                            <div class="gem-stat-label">Version DLs</div>
+                        </div>
+                    </div>
+
+                    <div class="gem-meta">
+                        <span class="gem-author">By ${gem.author}</span>
+                        <span class="gem-license">${gem.license}</span>
+                    </div>
+
+                    <div class="gem-links">
+                        <a href="${gem.gem}" target="_blank" class="gem-link">📥 RubyGems</a>
+                        <a href="${gem.github}" target="_blank" class="gem-link">🔗 GitHub</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Medium Articles Data
+        const mediumArticles = [
+            {
+                title: "🚀 Building Real-Time WebSockets in Rails API with ActionCable",
+                desc: "Real-time features are no longer a luxury — they're expected. Learn how to build live features with ActionCable.",
+                date: "Apr 17",
+                tags: ["Rails", "WebSockets", "ActionCable"],
+                url: "https://medium.com/@ashwinborkar1997/building-real-time-websockets-in-rails-api-with-actioncable-step-by-step-guide-710ed0a98dea"
+            },
+            {
+                title: "Add a target blank to link in rich text with Ruby on Rails",
+                desc: "How to open links in new pages within rich text content in Rails applications.",
+                date: "Jan 30, 2025",
+                tags: ["Rails", "HTML", "Links"],
+                url: "https://medium.com/@ashwinborkar1997/add-a-target-blank-to-link-in-rich-text-with-ruby-on-rails-77ecdd55ff01"
+            },
+            {
+                title: "Cocoon gem - How to use and why use this in Rails",
+                desc: "The Cocoon gem in Rails is primarily used to handle nested forms with dynamic associations.",
+                date: "Sep 27, 2024",
+                tags: ["Rails", "Gems", "Forms"],
+                url: "https://medium.com/@ashwinborkar1997/cocoon-gem-how-to-use-and-why-use-this-in-rails-a0679d74f351"
+            },
+            {
+                title: "Connection for FTP and upload file Using Rails 6",
+                desc: "Guidance on FTP configuration and file uploads in Rails applications.",
+                date: "Sep 27, 2024",
+                tags: ["Rails 6", "FTP"],
+                url: "https://medium.com/@ashwinborkar1997/connection-for-the-ftp-and-upload-file-in-ftp-using-rails-6-763567274fa6"
+            },
+            {
+                title: "How to make your own Ruby Gem",
+                desc: "Create and publish a simple Gem and contribute to the Ruby ecosystem.",
+                date: "May 3, 2024",
+                tags: ["Ruby", "Gems"],
+                url: "https://medium.com/@ashwinborkar1997/how-to-make-your-own-ruby-gem-2c06333b7e6f"
+            },
+            {
+                title: "Get association information between Models with ActiveRecord::Reflection",
+                desc: "Exploring model relationships and associations using Ruby on Rails ActiveRecord.",
+                date: "Apr 10, 2024",
+                tags: ["Rails", "ActiveRecord"],
+                url: "https://medium.com/@ashwinborkar1997/get-association-information-between-models-with-activerecord-reflection-0561f01d4325"
+            },
+            {
+                title: "How to Configure Gmail SMTP To Send Emails From Your Applications",
+                desc: "Email configuration guide for Rails 7.1.0 using Gmail SMTP settings.",
+                date: "Feb 20, 2024",
+                tags: ["Rails", "Email", "SMTP"],
+                url: "https://medium.com/@ashwinborkar1997/how-to-configure-gmail-smtp-to-send-emails-from-your-applications-in-ruby-on-rails-0a512c766b4c"
+            },
+            {
+                title: "Ruby On Rails Using Phlex gem",
+                desc: "Introduction to the Phlex gem for building view components in Rails.",
+                date: "Feb 12, 2024",
+                tags: ["Rails", "Gems"],
+                url: "https://medium.com/@ashwinborkar1997/ruby-on-rails-using-phlex-gem-5603ab87a4bf"
+            },
+            {
+                title: "[AWS] Experience SQS with AWS SDK for Ruby V2",
+                desc: "AWS messaging service integration and SQS queue management with Ruby.",
+                date: "Feb 7, 2024",
+                tags: ["AWS", "Ruby", "SQS"],
+                url: "https://medium.com/@ashwinborkar1997/aws-experience-sqs-with-aws-sdk-for-ruby-v2-446dd5b76323"
+            },
+            {
+                title: "7 common techniques to improve your debugging skills",
+                desc: "When working on Rails upgrades and solving issues, use these debugging techniques.",
+                date: "Sep 11, 2023",
+                tags: ["Debugging", "Rails"],
+                url: "https://medium.com/@ashwinborkar1997/7-common-techniques-to-improve-your-debugging-skills-b56da794b15d"
+            }
+        ];
+
+        // Render Medium Articles
+        function renderMediumArticles() {
+            const container = document.getElementById('mediumArticles');
+            container.innerHTML = mediumArticles.map((article, index) => `
+                <div class="blog-article-card" style="animation-delay: ${index * 0.05}s">
+                    <div class="blog-article-title">${article.title}</div>
+                    <p class="blog-article-desc">${article.desc}</p>
+                    <div class="blog-article-meta">
+                        <span class="blog-article-date">📅 ${article.date}</span>
+                        <div class="blog-article-tags">
+                            ${article.tags.map(tag => `<span class="blog-article-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <a href="${article.url}" target="_blank" class="blog-article-link">Read on Medium →</a>
+                </div>
+            `).join('');
+        }
+
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 15;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 3 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.setProperty('--duration', Math.random() * 12 + 8 + 's');
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createParticles();
+            renderGems();
+            renderMediumArticles();
+        });
+    </script>
+</body>
+</html>
+
+<script>
+    function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+  
+  heart.innerText = '💗';
+  
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+              heart.remove();
+              }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
