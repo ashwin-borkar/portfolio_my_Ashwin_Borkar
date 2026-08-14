@@ -750,6 +750,188 @@
             border-bottom: 3px solid var(--primary);
         }
 
+        /* Tech Stack Styling */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-group {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tech-group:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-group:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(107, 155, 127, 0.12);
+        }
+
+        .tech-group-title {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .tech-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            min-width: 60px;
+            line-height: 1;
+        }
+
+        .tech-group-title div h3 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .tech-group-title div p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tech-list span {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, rgba(107, 155, 127, 0.08) 0%, rgba(143, 184, 154, 0.08) 100%);
+            color: var(--primary);
+            border: 1.5px solid rgba(107, 155, 127, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+        }
+
+        .tech-list span:nth-child(1) {
+            border-color: rgba(219, 112, 147, 0.3);
+            background: linear-gradient(135deg, rgba(219, 112, 147, 0.08) 0%, rgba(240, 128, 128, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(2) {
+            border-color: rgba(255, 140, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 165, 0, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(3) {
+            border-color: rgba(123, 168, 196, 0.3);
+            background: linear-gradient(135deg, rgba(123, 168, 196, 0.08) 0%, rgba(100, 149, 237, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(4) {
+            border-color: rgba(144, 238, 144, 0.3);
+            background: linear-gradient(135deg, rgba(144, 238, 144, 0.08) 0%, rgba(152, 251, 152, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(5) {
+            border-color: rgba(221, 160, 221, 0.3);
+            background: linear-gradient(135deg, rgba(221, 160, 221, 0.08) 0%, rgba(216, 191, 216, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(6) {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 228, 125, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(7) {
+            border-color: rgba(64, 224, 208, 0.3);
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.08) 0%, rgba(175, 238, 238, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(8) {
+            border-color: rgba(255, 105, 180, 0.3);
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.08) 0%, rgba(255, 182, 193, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(9) {
+            border-color: rgba(135, 206, 250, 0.3);
+            background: linear-gradient(135deg, rgba(135, 206, 250, 0.08) 0%, rgba(173, 216, 230, 0.06) 100%);
+        }
+
+        .tech-list span:nth-child(n+10) {
+            border-color: rgba(240, 230, 140, 0.3);
+            background: linear-gradient(135deg, rgba(240, 230, 140, 0.08) 0%, rgba(255, 250, 205, 0.06) 100%);
+        }
+
+        .tech-list span:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(107, 155, 127, 0.2);
+        }
+
         /* Colorful skill tag variations */
         .skill-tag {
             position: relative;
@@ -1665,7 +1847,131 @@
                 justify-content: center;
             }
         }
+
+
+
+        .section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    opacity: 0.6;
+}
+
+.section-heading h2 {
+    margin: 10px 0;
+    font-size: 42px;
+}
+
+.section-heading p {
+    line-height: 1.7;
+    opacity: 0.7;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.tech-group {
+    padding: 28px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.tech-group-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.tech-number {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.45;
+    padding-top: 5px;
+}
+
+.tech-group-title h3 {
+    margin: 0 0 6px;
+    font-size: 20px;
+}
+
+.tech-group-title p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.tech-list span {
+    padding: 8px 13px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.tech-list span:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+}
+       .tech-group {
+    padding: 28px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.tech-list span {
+    padding: 8px 13px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    transition: all 0.25s ease;
+}
+
+.tech-list span:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(123, 168, 196, 0.12) 0%,
+        rgba(100, 149, 237, 0.1) 100%
+    );
+
+    border-color: rgba(123, 168, 196, 0.35);
+
+    transform: translateY(-2px);
+}
     </style>
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <!-- Animated Blob Background Elements -->
@@ -1706,10 +2012,39 @@
                 </div>
 
                 <div class="social-group">
-                    <a href="https://github.com/ashwin-borkar" target="_blank" class="social-btn" title="GitHub">🔗</a>
-                    <a href="https://medium.com/@ashwinborkar1997" target="_blank" class="social-btn" title="Medium">📝</a>
-                    <a href="https://rubygems.org/dashboard" target="_blank" class="social-btn" title="Ruby Gems">💎</a>
-                    <a href="https://www.linkedin.com/in/ashwin-borkar-a3b0a01a6" target="_blank" class="social-btn" title="LinkedIn">💼</a>
+
+                    <a href="https://github.com/ashwin-borkar"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="https://medium.com/@ashwinborkar1997"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        title="Medium">
+                        <i class="fa-brands fa-medium"></i>
+                    </a>
+
+                    <a href="https://rubygems.org/dashboard"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        title="RubyGems">
+                        <i class="fa-solid fa-gem"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/ashwin-borkar-a3b0a01a6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-btn"
+                        title="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                   
                 </div>
             </div>
 
@@ -1866,134 +2201,174 @@
         </div>
     </section>
 
+
     <!-- Skills Section -->
     <section id="skills" class="skills">
-        <div class="section-container">
+    <div class="section-container">
+
+        <div class="section-heading">
+            <span class="section-label">EXPERTISE</span>
             <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>🔧 Backend Development</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">💎</span>Ruby on Rails</span>
-                        <span class="skill-tag"><span class="skill-icon">📦</span>Node.js</span>
-                        <span class="skill-tag"><span class="skill-icon">🏗️</span>NestJS</span>
-                        <span class="skill-tag"><span class="skill-icon">🔌</span>REST APIs</span>
-                        <span class="skill-tag"><span class="skill-icon">🍇</span>Grape Framework</span>
-                        <span class="skill-tag"><span class="skill-icon">⚙️</span>Sidekiq</span>
-                        <span class="skill-tag"><span class="skill-icon">🔄</span>GraphQL</span>
-                        <span class="skill-tag"><span class="skill-icon">🔐</span>Authentication</span>
-                        <span class="skill-tag"><span class="skill-icon">🔗</span>Microservices</span>
-                        <span class="skill-tag"><span class="skill-icon">📨</span>Message Queues</span>
-                        <span class="skill-tag"><span class="skill-icon">🛡️</span>Security</span>
-                        <span class="skill-tag"><span class="skill-icon">⚡</span>Caching</span>
+            <p>
+                Technologies and engineering practices I use to build
+                scalable, maintainable, and production-ready applications.
+            </p>
+        </div>
+
+        <div class="tech-stack">
+
+            <!-- Backend -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">01</span>
+                    <div>
+                        <h3>Backend Engineering</h3>
+                        <p>Building scalable APIs and backend systems</p>
                     </div>
                 </div>
 
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>🎨 Frontend Development</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">⚛️</span>React.js</span>
-                        <span class="skill-tag"><span class="skill-icon">🎯</span>MobX</span>
-                        <span class="skill-tag"><span class="skill-icon">🏷️</span>HTML5</span>
-                        <span class="skill-tag"><span class="skill-icon">🎨</span>CSS3</span>
-                        <span class="skill-tag"><span class="skill-icon">📦</span>Bootstrap</span>
-                        <span class="skill-tag"><span class="skill-icon">📚</span>jQuery</span>
-                        <span class="skill-tag"><span class="skill-icon">✨</span>UI/UX Design</span>
-                        <span class="skill-tag"><span class="skill-icon">📱</span>Responsive Design</span>
-                        <span class="skill-tag"><span class="skill-icon">🎬</span>Animations</span>
-                        <span class="skill-tag"><span class="skill-icon">📊</span>Data Visualization</span>
-                        <span class="skill-tag"><span class="skill-icon">♿</span>Accessibility</span>
-                        <span class="skill-tag"><span class="skill-icon">⚡</span>Performance</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>🗄️ Databases & Storage</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">🐘</span>PostgreSQL</span>
-                        <span class="skill-tag"><span class="skill-icon">🐬</span>MySQL</span>
-                        <span class="skill-tag"><span class="skill-icon">🍃</span>MongoDB</span>
-                        <span class="skill-tag"><span class="skill-icon">📊</span>SQL Server</span>
-                        <span class="skill-tag"><span class="skill-icon">💾</span>SQLite</span>
-                        <span class="skill-tag"><span class="skill-icon">⚡</span>Query Optimization</span>
-                        <span class="skill-tag"><span class="skill-icon">🔴</span>Redis</span>
-                        <span class="skill-tag"><span class="skill-icon">🔍</span>Indexing</span>
-                        <span class="skill-tag"><span class="skill-icon">🔐</span>Data Security</span>
-                        <span class="skill-tag"><span class="skill-icon">💫</span>Transactions</span>
-                        <span class="skill-tag"><span class="skill-icon">🔄</span>Replication</span>
-                        <span class="skill-tag"><span class="skill-icon">📈</span>Scaling</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>☁️ DevOps & Cloud</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">☁️</span>AWS (EC2, RDS)</span>
-                        <span class="skill-tag"><span class="skill-icon">🚀</span>Heroku</span>
-                        <span class="skill-tag"><span class="skill-icon">🚢</span>Capistrano</span>
-                        <span class="skill-tag"><span class="skill-icon">⚙️</span>Nginx</span>
-                        <span class="skill-tag"><span class="skill-icon">🏃</span>Puma</span>
-                        <span class="skill-tag"><span class="skill-icon">🐳</span>Docker</span>
-                        <span class="skill-tag"><span class="skill-icon">📦</span>Kubernetes</span>
-                        <span class="skill-tag"><span class="skill-icon">🔧</span>Linux Admin</span>
-                        <span class="skill-tag"><span class="skill-icon">📊</span>Monitoring & Logging</span>
-                        <span class="skill-tag"><span class="skill-icon">🔐</span>SSL/TLS</span>
-                        <span class="skill-tag"><span class="skill-icon">🌍</span>CDN</span>
-                        <span class="skill-tag"><span class="skill-icon">⚡</span>Load Balancing</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>🛠️ Tools & Practices</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">📝</span>Git/Bitbucket</span>
-                        <span class="skill-tag"><span class="skill-icon">✅</span>RSpec/TDD</span>
-                        <span class="skill-tag"><span class="skill-icon">🔄</span>CI/CD</span>
-                        <span class="skill-tag"><span class="skill-icon">🔨</span>Jenkins</span>
-                        <span class="skill-tag"><span class="skill-icon">🎯</span>Agile/Scrum</span>
-                        <span class="skill-tag"><span class="skill-icon">👀</span>Code Review</span>
-                        <span class="skill-tag"><span class="skill-icon">🐛</span>Debugging</span>
-                        <span class="skill-tag"><span class="skill-icon">📈</span>Performance Testing</span>
-                        <span class="skill-tag"><span class="skill-icon">🎭</span>Testing Frameworks</span>
-                        <span class="skill-tag"><span class="skill-icon">📊</span>Jira/Trello</span>
-                        <span class="skill-tag"><span class="skill-icon">🔍</span>Code Analysis</span>
-                        <span class="skill-tag"><span class="skill-icon">🚀</span>Deployment</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <h3>💡 Soft Skills & Leadership</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><span class="skill-icon">🧠</span>Problem Solving</span>
-                        <span class="skill-tag"><span class="skill-icon">👥</span>Team Leadership</span>
-                        <span class="skill-tag"><span class="skill-icon">📐</span>API Design</span>
-                        <span class="skill-tag"><span class="skill-icon">⚡</span>Performance Optimization</span>
-                        <span class="skill-tag"><span class="skill-icon">📖</span>Technical Documentation</span>
-                        <span class="skill-tag"><span class="skill-icon">🎓</span>Mentoring</span>
-                        <span class="skill-tag"><span class="skill-icon">💬</span>Communication</span>
-                        <span class="skill-tag"><span class="skill-icon">🎯</span>Project Management</span>
-                        <span class="skill-tag"><span class="skill-icon">💡</span>Innovation</span>
-                        <span class="skill-tag"><span class="skill-icon">🤝</span>Collaboration</span>
-                        <span class="skill-tag"><span class="skill-icon">⏰</span>Time Management</span>
-                        <span class="skill-tag"><span class="skill-icon">🎖️</span>Architectural Design</span>
-                    </div>
+                <div class="tech-list">
+                    <span>Ruby on Rails</span>
+                    <span>Node.js</span>
+                    <span>NestJS</span>
+                    <span>REST APIs</span>
+                    <span>Grape</span>
+                    <span>GraphQL</span>
+                    <span>Sidekiq</span>
+                    <span>Microservices</span>
+                    <span>Authentication</span>
+                    <span>Message Queues</span>
+                    <span>Caching</span>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <!-- Frontend -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">02</span>
+                    <div>
+                        <h3>Frontend Engineering</h3>
+                        <p>Creating responsive and intuitive interfaces</p>
+                    </div>
+                </div>
+
+                <div class="tech-list">
+                    <span>React.js</span>
+                    <span>MobX</span>
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>Bootstrap</span>
+                    <span>jQuery</span>
+                    <span>UI/UX</span>
+                    <span>Responsive Design</span>
+                    <span>Animations</span>
+                    <span>Data Visualization</span>
+                    <span>Accessibility</span>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">03</span>
+                    <div>
+                        <h3>Database & Storage</h3>
+                        <p>Designing reliable and optimized data systems</p>
+                    </div>
+                </div>
+
+                <div class="tech-list">
+                    <span>PostgreSQL</span>
+                    <span>MySQL</span>
+                    <span>MongoDB</span>
+                    <span>SQL Server</span>
+                    <span>SQLite</span>
+                    <span>Redis</span>
+                    <span>Query Optimization</span>
+                    <span>Indexing</span>
+                    <span>Transactions</span>
+                    <span>Replication</span>
+                    <span>Scaling</span>
+                </div>
+            </div>
+
+            <!-- DevOps -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">04</span>
+                    <div>
+                        <h3>DevOps & Cloud</h3>
+                        <p>Deployment, infrastructure and production systems</p>
+                    </div>
+                </div>
+
+                <div class="tech-list">
+                    <span>AWS</span>
+                    <span>EC2</span>
+                    <span>RDS</span>
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                    <span>Nginx</span>
+                    <span>Puma</span>
+                    <span>Heroku</span>
+                    <span>Capistrano</span>
+                    <span>Linux</span>
+                    <span>CI/CD</span>
+                    <span>Monitoring</span>
+                </div>
+            </div>
+
+            <!-- Engineering -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">05</span>
+                    <div>
+                        <h3>Engineering Practices</h3>
+                        <p>Quality, testing and collaborative development</p>
+                    </div>
+                </div>
+
+                <div class="tech-list">
+                    <span>Git</span>
+                    <span>Bitbucket</span>
+                    <span>RSpec</span>
+                    <span>TDD</span>
+                    <span>Jenkins</span>
+                    <span>Code Review</span>
+                    <span>Debugging</span>
+                    <span>Agile/Scrum</span>
+                    <span>Jira</span>
+                    <span>Performance Testing</span>
+                </div>
+            </div>
+
+            <!-- Architecture -->
+            <div class="tech-group">
+                <div class="tech-group-title">
+                    <span class="tech-number">06</span>
+                    <div>
+                        <h3>Architecture & Leadership</h3>
+                        <p>Designing systems and leading technical initiatives</p>
+                    </div>
+                </div>
+
+                <div class="tech-list">
+                    <span>System Architecture</span>
+                    <span>API Design</span>
+                    <span>Microservices Architecture</span>
+                    <span>Performance Optimization</span>
+                    <span>Problem Solving</span>
+                    <span>Technical Documentation</span>
+                    <span>Mentoring</span>
+                    <span>Team Leadership</span>
+                    <span>Project Management</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </section>
+    
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="section-container">
